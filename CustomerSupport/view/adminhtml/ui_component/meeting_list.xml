@@ -1,0 +1,134 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">meeting_list.meeting_grid_data_source</item>
+			<item name="deps" xsi:type="string">meeting_list.meeting_grid_data_source</item>
+		</item>
+		<item name="spinner" xsi:type="string">meeting_columns</item>
+		<item name="buttons" xsi:type="array">
+			<item name="add" xsi:type="array">
+				<item name="name" xsi:type="string">add</item>
+				<item name="label" xsi:type="string">Create New Meeting</item>
+				<item name="class" xsi:type="string">primary</item>
+				<item name="url" xsi:type="string">*/*/new</item>
+			</item>
+		</item>
+	</argument>
+	<dataSource name="meeting_grid_data_source">
+		<argument name="dataProvider" xsi:type="configurableObject">
+			<argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+			<argument name="name" xsi:type="string">meeting_grid_data_source</argument>
+			<argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+			<argument name="requestFieldName" xsi:type="string">id</argument>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+					<item name="update_url" path="mui/index/render" xsi:type="url"/>
+					<item name="storageConfig" xsi:type="array">
+						<item name="indexField" xsi:type="string">entity_id</item>
+					</item>
+				</item>
+			</argument>
+		</argument>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="template" xsi:type="string">ui/grid/toolbar</item>
+			</item>
+		</argument>
+		<exportButton name="export_button" />
+		<bookmark name="bookmark"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="meeting_columns">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="childDefaults" xsi:type="array">
+					<item name="fieldAction" xsi:type="array">
+						<item name="provider" xsi:type="string">meeting_list.meeting_list.meeting_columns.actions</item>
+						<item name="target" xsi:type="string">applyAction</item>
+						<item name="params" xsi:type="array">
+							<item name="0" xsi:type="string">edit</item>
+							<item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+						</item>
+					</item>
+				</item>
+			</item>
+		</argument>
+		<selectionsColumn name="ids">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="indexField" xsi:type="string">entity_id</item>
+				</item>
+			</argument>
+		</selectionsColumn>
+		<column name="entity_id" sortOrder="1">
+			<settings>
+				<filter>textRange</filter>
+				<label translate="true">ID</label>
+				<sorting>asc</sorting>
+			</settings>
+		</column>
+		<column name="meeting_id" sortOrder="10">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Meeting ID</label>
+			</settings>
+		</column>
+		<column name="topic" sortOrder="20">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Topic</label>
+			</settings>
+		</column>
+		<column name="firstname" sortOrder="30">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Agent Name</label>
+			</settings>
+		</column>
+		<column name="start_url" sortOrder="40">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Meeting Host Url</label>
+			</settings>
+		</column>
+		<column name="join_url" sortOrder="50">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Meeting Join Url</label>
+			</settings>
+		</column>
+		<column name="start_time" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="60">
+			<settings>
+				<filter>dateRange</filter>
+				<dataType>date</dataType>
+				<label translate="true">Meeting Started At</label>
+			</settings>
+		</column>
+		<column name="end_time" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="70">
+			<settings>
+				<filter>dateRange</filter>
+				<dataType>date</dataType>
+				<label translate="true">Meeting Ended At</label>
+			</settings>
+		</column>
+		<column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="80">
+			<settings>
+				<options class="AmeshExtensions\CustomerSupport\Ui\Component\Listing\Column\Meeting\Status"/>
+				<filter>select</filter>
+				<dataType>select</dataType>
+				<label translate="true">Status</label>
+			</settings>
+		</column>
+		<actionsColumn name="actions" class="AmeshExtensions\CustomerSupport\Ui\Component\Listing\Column\Meeting\Actions">
+			<settings>
+				<indexField>entity_id</indexField>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

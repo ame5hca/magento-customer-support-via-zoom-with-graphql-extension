@@ -1,0 +1,22 @@
+{
+    "name": "ameshextensions/module-customersupport",
+    "description": "Customer Support",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "ameshca@gmail.com",
+            "name": "AmeshExtensions"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "AmeshExtensions\\CustomerSupport\\": ""
+        }
+    }
+}

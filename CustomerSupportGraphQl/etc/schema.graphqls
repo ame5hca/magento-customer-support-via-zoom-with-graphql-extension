@@ -1,0 +1,47 @@
+
+type Mutation {
+   getVideoSupport(
+       input: VideoSupportInput
+    ): VideoSupportOutput @resolver(class: "\\AmeshExtensions\\CustomerSupportGraphQl\\Model\\Resolver\\VideoSupport") @doc(description: "Video support url provider")    
+    requestForCallback(
+       input: CallbackRequestInput
+    ): Boolean @resolver(class: "\\AmeshExtensions\\CustomerSupportGraphQl\\Model\\Resolver\\CallbackRequest") @doc(description: "Video support callback request")    
+}
+
+type Query {
+    getCustomerSupportCategories: [CustomerSupportCategoriesOutput] @resolver(class: "\\AmeshExtensions\\CustomerSupportGraphQl\\Model\\Resolver\\CustomerSupportCategories") @doc(description: "Get the different categories which have the customer support enabled")
+    getCustomerSupportDistricts: [CustomerSupportDistrictsOutput] @resolver(class: "\\AmeshExtensions\\CustomerSupportGraphQl\\Model\\Resolver\\CustomerSupportDistricts") @doc(description: "Get the different districts in which the customer support is available")
+}
+
+input VideoSupportInput {
+    district_code: String
+    category_id: Int!
+    customer_email: String!
+    customer_name: String
+    customer_telephone: String
+    agent_id: Int
+}
+
+input CallbackRequestInput {
+    category_id: Int!
+    customer_email: String!
+    customer_name: String
+    customer_telephone: String
+}
+
+type VideoSupportOutput {    
+    zoom_link: String
+    zoom_link_desktop: String
+    zoom_link_mobile:String
+    show_callback: Boolean
+}
+
+type CustomerSupportCategoriesOutput {
+    id: Int
+    name: String
+}
+
+type CustomerSupportDistrictsOutput {
+    code: String
+    name: String
+}

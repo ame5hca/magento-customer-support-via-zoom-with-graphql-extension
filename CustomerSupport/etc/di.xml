@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="AmeshExtensions\CustomerSupport\Logger\Zoom\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="AmeshExtensions\CustomerSupport\Logger\Zoom\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">Zoom meeting logger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">AmeshExtensions\CustomerSupport\Logger\Zoom\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+	<type name="AmeshExtensions\CustomerSupport\Logger\Cron\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="AmeshExtensions\CustomerSupport\Logger\Cron\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">Customer support cron error logger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">AmeshExtensions\CustomerSupport\Logger\Cron\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="AmeshExtensions\CustomerSupport\Model\ResourceModel\MeetingList\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">customersupport_meeting</argument>
+			<argument name="resourceModel" xsi:type="string">AmeshExtensions\CustomerSupport\Model\ResourceModel\MeetingList\Collection</argument>
+		</arguments>
+	</virtualType>	
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="meeting_grid_data_source" xsi:type="string">AmeshExtensions\CustomerSupport\Model\ResourceModel\MeetingList\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>	
+    <virtualType name="AmeshExtensions\CustomerSupport\Model\ResourceModel\MeetingParticipant\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">customersupport_meeting_participant</argument>
+			<argument name="resourceModel" xsi:type="string">AmeshExtensions\CustomerSupport\Model\ResourceModel\MeetingParticipant\Collection</argument>
+		</arguments>
+	</virtualType>	
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="participant_grid_data_source" xsi:type="string">AmeshExtensions\CustomerSupport\Model\ResourceModel\MeetingParticipant\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>	
+    <virtualType name="AmeshExtensions\CustomerSupport\Model\ResourceModel\MeetingCallbackRequests\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">customersupport_callback_requests</argument>
+			<argument name="resourceModel" xsi:type="string">AmeshExtensions\CustomerSupport\Model\ResourceModel\MeetingCallbackRequests\Collection</argument>
+		</arguments>
+	</virtualType>	
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="callback_requests_grid_data_source" xsi:type="string">AmeshExtensions\CustomerSupport\Model\ResourceModel\MeetingCallbackRequests\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>	
+    <preference for="AmeshExtensions\CustomerSupport\Api\ZoomNotificationInterface" type="AmeshExtensions\CustomerSupport\Model\Zoom\NotificationManager"/>
+</config>

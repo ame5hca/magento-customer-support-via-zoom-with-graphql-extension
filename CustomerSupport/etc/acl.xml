@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="AmeshExtensions_CustomerSupport::config" title="Customer Support Module Configuration" sortOrder="100" />
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="AmeshExtensions_CustomerSupport::customersupport" sortOrder="100" title="Customer Support">
+                    <resource id="AmeshExtensions_CustomerSupport::meetings" sortOrder="100" title="Meetings">
+                        <resource id="AmeshExtensions_CustomerSupport::create_meeting" sortOrder="10" title="Create Meeting"/>
+                        <resource id="AmeshExtensions_CustomerSupport::view_meeting" sortOrder="20" title="View Meeting"/>
+                    </resource>
+                    <resource id="AmeshExtensions_CustomerSupport::participants_info" sortOrder="110" title="Participant Info">
+                        <resource id="AmeshExtensions_CustomerSupport::edit_participants_info" sortOrder="10" title="Edit Participant Info"/>
+                        <resource id="AmeshExtensions_CustomerSupport::view_participants_info" sortOrder="20" title="View Participant Info"/>
+                    </resource>
+                    <resource id="AmeshExtensions_CustomerSupport::callback_requests" sortOrder="120" title="Callback Requests">
+                        <resource id="AmeshExtensions_CustomerSupport::update_callback_request" sortOrder="10" title="Update Callback Request"/>
+                        <resource id="AmeshExtensions_CustomerSupport::view_callback_request" sortOrder="20" title="View Callback Request"/>
+                    </resource>
+				</resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

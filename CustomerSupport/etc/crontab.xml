@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="ameshextensions_meeting">
+        <job instance="AmeshExtensions\CustomerSupport\Cron\MeetingManager" method="expireMeetingReservation" name="meeting_reservation_expiry_cron">
+            <schedule>* * * * *</schedule>
+        </job>
+        <job instance="AmeshExtensions\CustomerSupport\Cron\MeetingManager" method="endMeeting" name="end_meeting_cron">
+            <schedule>0 1 * * *</schedule>
+        </job>
+        <job instance="AmeshExtensions\CustomerSupport\Cron\MeetingParticipantManager" method="unassignParticipantFromMeeting" name="unassign_paricipant_from_meeting_cron">
+            <schedule>0 1 * * *</schedule>
+        </job>
+    </group>
+</config>

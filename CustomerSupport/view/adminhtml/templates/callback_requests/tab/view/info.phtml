@@ -1,0 +1,45 @@
+<?php
+$meetingData = $block->getCallbackRequestInfo();
+?>
+
+<div class="fieldset-wrapper meeting-callback-request-information">
+    <div class="fieldset-wrapper-title">
+        <span class="title"><?= $block->escapeHtml(__('Request Information')) ?></span>
+    </div>
+    <table class="admin__table-secondary">
+        <tbody>
+            <tr>
+                <th><?= $block->escapeHtml(__('Customer ID:')) ?></th>
+                <td><?= $meetingData->getData('customer_id'); ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Customer Name:')) ?></th>
+                <td><?= $meetingData->getData('customer_name'); ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Customer Email:')) ?></th>
+                <td><?= $meetingData->getData('customer_email'); ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Customer Telephone:')) ?></th>
+                <td><?= $meetingData->getData('customer_telephone'); ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Category ID:')) ?></th>
+                <td><?= $meetingData->getData('category_id'); ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Agent Name:')) ?></th>
+                <td><?= $meetingData->getData('agent_name'); ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Status:')) ?></th>
+                <td><?= $meetingData->getData('status'); ?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Requested Time:')) ?></th>
+                <td><?= $meetingData->getData('created_at'); ?></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

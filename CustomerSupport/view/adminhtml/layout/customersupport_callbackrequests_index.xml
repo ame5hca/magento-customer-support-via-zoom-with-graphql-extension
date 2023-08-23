@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="styles"/>	
+	<body>
+		<referenceContainer name="content">			
+			<uiComponent name="callback_requests"/>
+		</referenceContainer>
+		<referenceContainer name="page.main.actions">
+			<block class="AmeshExtensions\CustomerSupport\Block\Adminhtml\CallbackRequests\CopyUrl" name="callback_requests.list.copyurl" template="AmeshExtensions_CustomerSupport::callback_requests/support_url.phtml" />
+		</referenceContainer>
+	</body>
+</page>

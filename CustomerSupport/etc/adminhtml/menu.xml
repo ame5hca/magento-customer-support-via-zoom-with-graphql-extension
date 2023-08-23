@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+        <add id="AmeshExtensions_CustomerSupport::top" module="AmeshExtensions_CustomerSupport" resource="AmeshExtensions_CustomerSupport::customersupport" sortOrder="20" title="Customer Support"/>
+		<add action="customersupport/meeting/index" id="AmeshExtensions_CustomerSupport::meeting" module="AmeshExtensions_CustomerSupport" parent="AmeshExtensions_CustomerSupport::top" resource="AmeshExtensions_CustomerSupport::meetings" sortOrder="10" title="Meetings"/>        
+		<add action="customersupport/participant/index" id="AmeshExtensions_CustomerSupport::participant" module="AmeshExtensions_CustomerSupport" parent="AmeshExtensions_CustomerSupport::top" resource="AmeshExtensions_CustomerSupport::participants_info" sortOrder="11" title="Meeting Participant Info"/>        
+		<add action="customersupport/callbackrequests/index" id="AmeshExtensions_CustomerSupport::callbackrequests" module="AmeshExtensions_CustomerSupport" parent="AmeshExtensions_CustomerSupport::top" resource="AmeshExtensions_CustomerSupport::callback_requests" sortOrder="12" title="Callback Requests"/>        
+	</menu>
+</config>

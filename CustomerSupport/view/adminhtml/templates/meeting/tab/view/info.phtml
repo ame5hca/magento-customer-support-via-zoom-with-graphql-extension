@@ -1,0 +1,57 @@
+<?php
+$meetingData = $block->getMeetingInfo();
+?>
+
+<div class="fieldset-wrapper meeting-information">
+    <div class="fieldset-wrapper-title">
+        <span class="title"><?= $block->escapeHtml(__('Meeting Information')) ?></span>
+    </div>
+    <table class="admin__table-secondary">
+        <tbody>       
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting ID:')) ?></th>
+                <td><?= $meetingData->getData('meeting_id');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Host ID:')) ?></th>
+                <td><?= $meetingData->getData('host_id');?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting Topic:')) ?></th>
+                <td><?= $meetingData->getData('topic');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting Start Time:')) ?></th>
+                <td><?= $meetingData->getData('start_time');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting End Time:')) ?></th>
+                <td><?= $meetingData->getData('end_time');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting Status:')) ?></th>
+                <td><?= $meetingData->getData('status');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting Duration(in muniutes):')) ?></th>
+                <td><?= $meetingData->getData('duration');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting Start(Hosting) Url:')) ?></th>
+                <td><?= $meetingData->getData('start_url');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting Join Url:')) ?></th>
+                <td><?= $meetingData->getData('join_url');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting Join Password:')) ?></th>
+                <td><?= $meetingData->getData('password');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting Created At:')) ?></th>
+                <td><?= $meetingData->getData('created_at');?></td>
+            </tr>                      
+        </tbody>
+    </table>    
+</div>

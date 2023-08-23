@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">meeting_info.meeting_info_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Meeting Information</item>
+        <item name="reverseMetadataMerge" xsi:type="boolean">true</item>
+    </argument>
+	<settings>
+        <buttons>            
+            <button name="delete" class="AmeshExtensions\CustomerSupport\Block\Adminhtml\Meeting\Edit\ManageMeetingButton"/>            
+            <button name="back" class="AmeshExtensions\CustomerSupport\Block\Adminhtml\Meeting\Edit\BackButton"/>
+        </buttons>
+        <layout>
+			<navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>meeting_info.meeting_info_data_source</dep>
+        </deps>
+    </settings>	
+	<dataSource name="meeting_info_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>        
+        <dataProvider class="AmeshExtensions\CustomerSupport\Ui\DataProvider\MeetingDataProvider" name="meeting_info_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+	<htmlContent name="meeting_info_tab_content">
+        <block class="AmeshExtensions\CustomerSupport\Block\Adminhtml\Meeting\Edit\Tab\View" name="meeting_info_edit_tab_view" template="AmeshExtensions_CustomerSupport::meeting/tab/view.phtml">
+            <arguments>
+                <argument name="sort_order" xsi:type="number">10</argument>
+                <argument name="tab_label" xsi:type="string" translate="true">Meeting Details</argument>
+            </arguments>    
+			<block class="AmeshExtensions\CustomerSupport\Block\Adminhtml\Meeting\Edit\Tab\View\Info" name="meeting_info_edit_tab_view_info" template="AmeshExtensions_CustomerSupport::meeting/tab/view/info.phtml" />        
+        </block>
+    </htmlContent>
+	<htmlContent name="participants_list">
+        <block class="AmeshExtensions\CustomerSupport\Block\Adminhtml\Meeting\Edit\ParticipantsTab" name="meeting_participants" />
+    </htmlContent>
+</form>

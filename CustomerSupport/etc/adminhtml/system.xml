@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="ameshextensions" translate="label" sortOrder="500">
+            <label>Customer Support</label>
+        </tab>
+        <section id="customersupport" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Customer Support</label>
+            <tab>ameshextensions</tab>
+            <resource>AmeshExtensions_CustomerSupport::config</resource>
+            <group id="zoom" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Zoom Api Settings</label>
+                <field id="enable" type="select" showInDefault="1" sortOrder="0" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="api_key" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Api Key</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="customersupport/zoom/enable">1</field>
+                    </depends>
+                </field>
+                <field id="api_secret" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Api Secret</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="customersupport/zoom/enable">1</field>
+                    </depends>
+                </field>
+                <field id="event_notification_token" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Event Notification Verify Token</label>
+                    <validate>required-entry</validate>
+                    <comment><![CDATA[Token used to verify the event notifications that send from zoom.]]></comment>
+                    <depends>
+                        <field id="customersupport/zoom/enable">1</field>
+                    </depends>
+                </field>                            
+            </group> 
+            <group id="zoom_user_accounts" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Zoom User Account</label>
+                <field id="sync_zoom_user_account" translate="label" type="button" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sync Zoom User Accounts</label>
+                    <frontend_model>AmeshExtensions\CustomerSupport\Block\System\Config\SyncZoomUserButton</frontend_model>
+                </field>    
+            </group>  
+        </section>
+    </system>
+</config>

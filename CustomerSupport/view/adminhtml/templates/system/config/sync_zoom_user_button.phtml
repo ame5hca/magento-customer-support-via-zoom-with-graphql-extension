@@ -1,0 +1,43 @@
+<script>
+    require([
+        'jquery',
+        'prototype'
+    ], function(jQuery){
+ 
+        var collectSpan = jQuery('#syncing_status_section');
+ 
+        jQuery('#sync_zoom_account').click(function () {
+            var params = {};
+            new Ajax.Request('<?php echo $block->getActionUrl() ?>', {
+                parameters:     params,
+                loaderArea:     false,
+                asynchronous:   true,
+                onCreate: function() {
+                    collectSpan.find('.collected').hide();
+                    collectSpan.find('.processing').show();
+                    jQuery('#syncing_message').text('');
+                },
+                onSuccess: function(response) {
+                    collectSpan.find('.processing').hide();
+ 
+                    var resultText = '';
+                    if (response.status > 200) {
+                        resultText = response.statusText;
+                    } else {
+                        resultText = 'Successfully Synced';
+                        collectSpan.find('.collected').show();
+                    }
+                    jQuery('#syncing_message').text(resultText);
+                }
+            });
+        });
+ 
+    });
+</script>
+ 
+<?php echo $block->getButtonHtml() ?>
+<span class="syncing-indicator" id="syncing_status_section">
+    <img class="processing" hidden="hidden" alt="Syncing" style="margin:0 5px" src="<?php echo $block->getViewFileUrl('images/process_spinner.gif') ?>"/>
+    <img class="collected" hidden="hidden" alt="Syncing" style="margin:-3px 5px" src="<?php echo $block->getViewFileUrl('images/rule_component_apply.gif') ?>"/>
+    <span id="syncing_message"></span>
+</span>

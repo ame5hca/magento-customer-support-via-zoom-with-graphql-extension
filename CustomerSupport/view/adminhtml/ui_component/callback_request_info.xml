@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">callback_request_info.callback_request_info_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">callback Request Info</item>
+        <item name="reverseMetadataMerge" xsi:type="boolean">true</item>
+    </argument>
+	<settings>
+        <buttons>            
+            <button name="save" class="AmeshExtensions\CustomerSupport\Block\Adminhtml\CallbackRequests\Edit\SaveButton"/>            
+            <button name="back" class="AmeshExtensions\CustomerSupport\Block\Adminhtml\CallbackRequests\Edit\BackButton"/>
+        </buttons>
+        <layout>
+			<navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>callback_request_info.callback_request_info_data_source</dep>
+        </deps>
+    </settings>	
+	<dataSource name="callback_request_info_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="customersupport/callbackrequests/save"/>
+        </settings>
+        <dataProvider class="AmeshExtensions\CustomerSupport\Ui\DataProvider\CallbackRequestDataProvider" name="callback_request_info_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>		
+	<fieldset name="callback_form">
+        <settings>
+            <label translate="true">Callback Request Status</label>
+        </settings>        
+		<field name="status" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">callback_form</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>true</visible>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="AmeshExtensions\CustomerSupport\Ui\Component\Listing\Column\CallbackRequests\Status"/>                  
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>	
+	<htmlContent name="callback_request_info_tab_content">
+        <block class="AmeshExtensions\CustomerSupport\Block\Adminhtml\CallbackRequests\Edit\Tab\View" name="callback_request_info_edit_tab_view" template="AmeshExtensions_CustomerSupport::callback_requests/tab/view.phtml">
+            <arguments>
+                <argument name="sort_order" xsi:type="number">100</argument>
+                <argument name="tab_label" xsi:type="string" translate="true">Request Info</argument>
+            </arguments>    
+			<block class="AmeshExtensions\CustomerSupport\Block\Adminhtml\CallbackRequests\Edit\Tab\View\Info" name="callback_request_info_edit_tab_view_info" template="AmeshExtensions_CustomerSupport::callback_requests/tab/view/info.phtml" />        
+        </block>
+    </htmlContent>
+</form>

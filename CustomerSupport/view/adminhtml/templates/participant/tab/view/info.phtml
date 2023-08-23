@@ -1,0 +1,61 @@
+<?php
+$meetingData = $block->getMeetingParticipantInfo();
+?>
+
+<div class="fieldset-wrapper meeting-participant-information">
+    <div class="fieldset-wrapper-title">
+        <span class="title"><?= $block->escapeHtml(__('Meeting Participant Information')) ?></span>
+    </div>
+    <table class="admin__table-secondary">
+        <tbody>       
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting ID:')) ?></th>
+                <td><?= $meetingData->getData('meeting_id');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Participant Name:')) ?></th>
+                <td><?= $meetingData->getData('participant_name');?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Participant Email:')) ?></th>
+                <td><?= $meetingData->getData('participant_email');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Participant Telephone:')) ?></th>
+                <td><?= $meetingData->getData('participant_telephone');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Meeting Duration(in minutes):')) ?></th>
+                <td><?= $meetingData->getData('duration');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Buy Percentage:')) ?></th>
+                <td><?= $meetingData->getData('buy_percentage');?></td>
+            </tr>
+            <tr>
+                <th><?= $block->escapeHtml(__('Order Id:')) ?></th>
+                <td><?= $meetingData->getData('order_id');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Participant Join Time:')) ?></th>
+                <td><?= $meetingData->getData('join_time');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Participant Left Time:')) ?></th>
+                <td><?= $meetingData->getData('left_time');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Remarks:')) ?></th>
+                <td><?= $meetingData->getData('remarks');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Customer Id:')) ?></th>
+                <td><?= $meetingData->getData('customer_id');?></td>
+            </tr> 
+            <tr>
+                <th><?= $block->escapeHtml(__('Participant Status:')) ?></th>
+                <td><?= $meetingData->getData('status');?></td>
+            </tr>              
+        </tbody>
+    </table>    
+</div>

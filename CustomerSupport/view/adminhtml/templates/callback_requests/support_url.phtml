@@ -1,0 +1,22 @@
+<div class="page-actions-buttons">
+    <div class="copy-url-button">
+        <button id="copy-callback-url-button" title="Copy Url" class="action-default primary add">
+            <span><?= __('Copy Url'); ?></span>
+        </button>
+    </div>
+</div>
+
+<script>
+
+require(["jquery"], 
+function($) {
+    $('#copy-callback-url-button').on('click', function() {        
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val('<?= $block->getSupportUrl(); ?>').select();
+        document.execCommand("copy");
+        $temp.remove();
+    });
+});
+
+</script>

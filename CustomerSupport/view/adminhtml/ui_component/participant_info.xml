@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">participant_info.participant_info_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Participant Information</item>
+        <item name="reverseMetadataMerge" xsi:type="boolean">true</item>
+    </argument>
+	<settings>
+        <buttons>            
+            <button name="save" class="AmeshExtensions\CustomerSupport\Block\Adminhtml\Participant\Edit\SaveButton"/>            
+            <button name="back" class="AmeshExtensions\CustomerSupport\Block\Adminhtml\Participant\Edit\BackButton"/>
+        </buttons>
+        <layout>
+			<navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>participant_info.participant_info_data_source</dep>
+        </deps>
+    </settings>	
+	<dataSource name="participant_info_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="customersupport/participant/save"/>
+        </settings>
+        <dataProvider class="AmeshExtensions\CustomerSupport\Ui\DataProvider\ParticipantDataProvider" name="participant_info_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>		
+	<fieldset name="meeting_feedback">
+        <settings>
+            <label translate="true">Meeting Feedback</label>
+        </settings>        
+		<field name="buy_percentage" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">participant</item>
+                </item>
+            </argument>
+            <settings>
+			<label translate="true">Buy Percentage</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+            </settings>
+        </field>
+		<field name="remarks" formElement="textarea">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">participant</item>
+                </item>
+            </argument>
+            <settings>
+				<label translate="true">Remarks</label>                
+                <dataType>text</dataType>
+            </settings>
+        </field>        
+    </fieldset>	
+	<htmlContent name="participant_info_tab_content">
+        <block class="AmeshExtensions\CustomerSupport\Block\Adminhtml\Participant\Edit\Tab\View" name="participant_info_edit_tab_view" template="AmeshExtensions_CustomerSupport::participant/tab/view.phtml">
+            <arguments>
+                <argument name="sort_order" xsi:type="number">100</argument>
+                <argument name="tab_label" xsi:type="string" translate="true">Meeting Info</argument>
+            </arguments>    
+			<block class="AmeshExtensions\CustomerSupport\Block\Adminhtml\Participant\Edit\Tab\View\Info" name="participant_info_edit_tab_view_info" template="AmeshExtensions_CustomerSupport::participant/tab/view/info.phtml" />        
+        </block>
+    </htmlContent>
+    <!--<htmlContent name="addtocart_products">
+        <block class="AmeshExtensions\CustomerSupport\Block\Adminhtml\Participant\Edit\AllProductsTab" name="all_products" />
+    </htmlContent>-->
+</form>

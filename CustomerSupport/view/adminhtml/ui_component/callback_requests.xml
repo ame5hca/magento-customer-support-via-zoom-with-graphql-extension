@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">callback_requests.callback_requests_grid_data_source</item>
+			<item name="deps" xsi:type="string">callback_requests.callback_requests_grid_data_source</item>
+		</item>
+		<item name="spinner" xsi:type="string">callback_requests_columns</item>		
+	</argument>
+	<dataSource name="callback_requests_grid_data_source">
+		<argument name="dataProvider" xsi:type="configurableObject">
+			<argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+			<argument name="name" xsi:type="string">callback_requests_grid_data_source</argument>
+			<argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+			<argument name="requestFieldName" xsi:type="string">id</argument>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+					<item name="update_url" path="mui/index/render" xsi:type="url"/>
+					<item name="storageConfig" xsi:type="array">
+						<item name="indexField" xsi:type="string">entity_id</item>
+					</item>
+				</item>
+			</argument>
+		</argument>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		 <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="template" xsi:type="string">ui/grid/toolbar</item>
+            </item>
+        </argument>        
+		<exportButton name="export_button" />
+		<bookmark name="bookmark"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="callback_requests_columns">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">				
+				<item name="childDefaults" xsi:type="array">
+					<item name="fieldAction" xsi:type="array">
+						<item name="provider" xsi:type="string">callback_requests.callback_requests.callback_requests_columns.actions</item>
+						<item name="target" xsi:type="string">applyAction</item>
+						<item name="params" xsi:type="array">
+							<item name="0" xsi:type="string">edit</item>
+							<item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+						</item>
+					</item>
+				</item>
+			</item>
+		</argument>
+		<selectionsColumn name="ids">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="indexField" xsi:type="string">entity_id</item>
+				</item>
+			</argument>
+		</selectionsColumn>
+		<column name="entity_id" sortOrder="10">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+            </settings>
+        </column>
+		<column name="customer_name" sortOrder="20">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Customer Name</label>
+            </settings>
+        </column>
+		<column name="customer_email" sortOrder="30">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Customer Email</label>
+            </settings>
+        </column>
+		<column name="customer_telephone" sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Customer Telephone</label>
+            </settings>
+        </column>
+		<column name="agent_name" sortOrder="50">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Agent Name</label>
+            </settings>
+        </column>			
+		<column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date" sortOrder="60">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Requested Date</label>
+            </settings>
+        </column>		
+		<column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="70">
+            <settings>
+                <options class="AmeshExtensions\CustomerSupport\Ui\Component\Listing\Column\CallbackRequests\Status"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+        </column>		
+		<actionsColumn name="actions" class="AmeshExtensions\CustomerSupport\Ui\Component\Listing\Column\CallbackRequests\Actions">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>		
+	</columns>
+</listing>

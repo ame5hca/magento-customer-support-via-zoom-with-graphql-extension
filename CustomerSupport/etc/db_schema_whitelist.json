@@ -1,0 +1,148 @@
+{
+    "customersupport_meeting": {
+        "column": {
+            "entity_id": true,
+            "agent_id": true,
+            "meeting_id": true,
+            "host_id": true,
+            "topic": true,
+            "meeting_type": true,
+            "start_time": true,
+            "end_time": true,
+            "status": true,
+            "duration": true,
+            "start_url": true,
+            "join_url": true,
+            "password": true,
+            "created_at": true,
+            "updated_at": true,
+            "encrypted_password": true,
+            "reservation_at": true
+        },
+        "index": {
+            "CUSTOMERSUPPORT_MEETING_MEETING_ID": true,
+            "CUSTOMERSUPPORT_MEETING_AGENT_ID": true,
+            "CUSTOMERSUPPORT_MEETING_DURATION": true,
+            "CUSTOMERSUPPORT_MEETING_STATUS": true,
+            "CUSTOMERSUPPORT_MEETING_CREATED_AT": true,
+            "CUSTOMERSUPPORT_MEETING_TOPIC_START_URL_JOIN_URL_MEETING_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "customersupport_meeting_participant": {
+        "column": {
+            "entity_id": true,
+            "meeting_id": true,
+            "participant_name": true,
+            "participant_email": true,
+            "participant_telephone": true,
+            "participant_id": true,
+            "duration": true,
+            "buy_percentage": true,
+            "order_id": true,
+            "remarks": true,
+            "joined_time": true,
+            "left_time": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true,
+            "customer_id": true,
+            "join_id": true,
+            "participant_zoom_id": true,
+            "join_time": true
+        },
+        "index": {
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_MEETING_ID": true,
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_PARTICIPANT_NAME": true,
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_PARTICIPANT_EMAIL": true,
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_PARTICIPANT_TELEPHONE": true,
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_DURATION": true,
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_ORDER_ID": true,
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_STATUS": true,
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_CREATED_AT": true,
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_JOINED_TIME": true,
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_LEFT_TIME": true,
+            "FTI_D335942824CC14528ACDDBE3A864A215": true,
+            "CUSTOMERSUPPORT_MEETING_PARTICIPANT_JOIN_TIME": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_C890383C3CBFC607D4652D159645F248": true,
+            "CSTRSUPPORT_MEETING_PARTICIPANT_PARTICIPANT_ID_CSTR_ENTT_ENTT_ID": true,
+            "CSTRSUPPORT_MEETING_PARTICIPANT_CSTR_ID_CSTR_ENTT_ENTT_ID": true
+        }
+    },
+    "customersupport_agent": {
+        "column": {
+            "entity_id": true,
+            "admin_id": true,
+            "primary_category_id": true,
+            "secondary_category_id": true,
+            "zoom_user_id": true,
+            "is_agent": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "CUSTOMERSUPPORT_AGENT_IS_AGENT": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CUSTOMERSUPPORT_AGENT_ADMIN_ID_ADMIN_USER_USER_ID": true,
+            "CSTRSUPPORT_AGENT_PRIMARY_CTGR_ID_CAT_CTGR_ENTT_ENTT_ID": true,
+            "CSTRSUPPORT_AGENT_SECONDARY_CTGR_ID_CAT_CTGR_ENTT_ENTT_ID": true,
+            "CUSTOMERSUPPORT_AGENT_ADMIN_ID_PRIMARY_CATEGORY_ID": true
+        }
+    },
+    "zoom_host_users": {
+        "column": {
+            "entity_id": true,
+            "user_id": true,
+            "first_name": true,
+            "last_name": true,
+            "email": true,
+            "type": true,
+            "status": true,
+            "updated_at": true
+        },
+        "index": {
+            "ZOOM_HOST_USERS_FIRST_NAME_LAST_NAME_EMAIL_STATUS": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "ZOOM_HOST_USERS_USER_ID": true
+        }
+    },
+    "customersupport_callback_requests": {
+        "column": {
+            "entity_id": true,
+            "customer_id": true,
+            "customer_name": true,
+            "customer_email": true,
+            "customer_telephone": true,
+            "category_id": true,
+            "agent_id": true,
+            "agent_name": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "CUSTOMERSUPPORT_CALLBACK_REQUESTS_CUSTOMER_NAME": true,
+            "CUSTOMERSUPPORT_CALLBACK_REQUESTS_CUSTOMER_EMAIL": true,
+            "CUSTOMERSUPPORT_CALLBACK_REQUESTS_CUSTOMER_TELEPHONE": true,
+            "CUSTOMERSUPPORT_CALLBACK_REQUESTS_AGENT_NAME": true,
+            "CUSTOMERSUPPORT_CALLBACK_REQUESTS_STATUS": true,
+            "CUSTOMERSUPPORT_CALLBACK_REQUESTS_CREATED_AT": true,
+            "FTI_35A33A7E2FEA9B0DFF713375B530ADCB": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "CSTRSUPPORT_CALLBACK_REQUESTS_CSTR_ID_CSTR_ENTT_ENTT_ID": true,
+            "CUSTOMERSUPPORT_CALLBACK_REQUESTS_AGENT_ID_ADMIN_USER_USER_ID": true,
+            "CSTRSUPPORT_CALLBACK_REQUESTS_CTGR_ID_CAT_CTGR_ENTT_ENTT_ID": true
+        }
+    }
+}
